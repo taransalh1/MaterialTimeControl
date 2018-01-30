@@ -76,10 +76,11 @@ export class WMatTimePickerComponent implements OnInit {
     }
     ngOnChanges(changes: SimpleChanges) {
         debugger
-       if(changes.haserror)
+       if(changes.haserror && changes.haserror.currentValue==true)
        {
         this.inptcontrol.markAsTouched();
        }
+     
         
       
       }
