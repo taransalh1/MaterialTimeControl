@@ -17,8 +17,11 @@ export class WMatTimePickerComponent implements OnInit {
 
     @Input() userTime: ITime;
     @Output() userTimeChange: EventEmitter<ITime> = new EventEmitter();
-
+    @Input () inputdisabled:boolean
+    @Input () Placeholder:string
     @Input() color: string;
+    inptdisabled=true;
+    plchlder="Select Time";
 
     constructor(private dialog: MatDialog) { }
 
@@ -34,6 +37,8 @@ export class WMatTimePickerComponent implements OnInit {
                 format: 24
             }
         }
+        this.inptdisabled=this.inputdisabled;
+        this.plchlder=this.Placeholder;
     }
 
     private get time(): string {
@@ -78,6 +83,7 @@ export class WMatTimePickerComponent implements OnInit {
                     format: this.userTime.format
                 },
                 color: this.color
+            
             }
         });
 

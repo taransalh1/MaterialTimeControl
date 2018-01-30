@@ -8,9 +8,10 @@
     <mat-input-container fxFlex class="timeContainer">
         <input matInput
             class="timeInput"
-            placeholder="Selec time" 
+            [placeholder]="plchlder" 
             id="time_Control" 
             name="time_Control"
+            [disabled]="inptdisabled"
             [value]="time"
         >
     </mat-input-container>
