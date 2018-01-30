@@ -16,6 +16,7 @@ import { FormControl,ReactiveFormsModule } from '@angular/forms';
 
 export class WMatTimePickerComponent implements OnInit {
     inptcontrol=new FormControl();
+    @Input() errormessage:string;
     @Input() haserror:boolean; 
     @Input() userTime: ITime;
     @Output() userTimeChange: EventEmitter<ITime> = new EventEmitter();
@@ -74,16 +75,7 @@ export class WMatTimePickerComponent implements OnInit {
             return `${hour}:${this.userTime.minute} ${meriden}`;
         }
     }
-    ngOnChanges(changes: SimpleChanges) {
-        debugger
-       if(changes.haserror && changes.haserror.currentValue==true)
-       {
-        this.inptcontrol.markAsTouched();
-       }
-     
-        
-      
-      }
+    
 
     public showPicker($event) {
 
