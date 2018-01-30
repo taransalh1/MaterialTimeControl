@@ -20,8 +20,10 @@ export class WMatTimePickerComponent implements OnInit {
     @Input () inputdisabled:boolean
     @Input () Placeholder:string
     @Input() color: string;
+    @Input() name:string;
     inptdisabled=true;
     plchlder="Select Time";
+    nm="";
 
     constructor(private dialog: MatDialog) { }
 
@@ -39,6 +41,7 @@ export class WMatTimePickerComponent implements OnInit {
         }
         this.inptdisabled=this.inputdisabled;
         this.plchlder=this.Placeholder;
+        this.nm=this.name;
     }
 
     private get time(): string {
