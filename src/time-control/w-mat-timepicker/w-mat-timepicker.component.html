@@ -4,16 +4,17 @@
     <button mat-button (click)="showPicker($event)" class="time-picker-button">
         <mat-icon>access_time</mat-icon>
     </button>
-    
-    <mat-input-container fxFlex class="timeContainer">
+
+    <div fxFlex class="timeContainer">
+            <mat-form-field>
         <input matInput
             class="timeInput"
             [placeholder]="plchlder" 
             id="time_Control" 
             name="time_Control"
-            [disabled]="inptdisabled"
-            [value]="time"
-        >
-    </mat-input-container>
+            [disabled]="inptdisabled"   
+            [value]="time">
+        </mat-form-field>
+    </div>
 
 </div>
