@@ -1,9 +1,10 @@
 
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, SimpleChanges, SimpleChange } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 import { WTimeDialogComponent } from '../w-time-dialog/w-time-dialog.component';
 import { ITime } from '../w-clock/w-clock.component';
+import { FormControl,ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { ITime } from '../w-clock/w-clock.component';
 })
 
 export class WMatTimePickerComponent implements OnInit {
-
+    inptcontrol=new FormControl();
+    @Input() haserror:boolean; 
     @Input() userTime: ITime;
     @Output() userTimeChange: EventEmitter<ITime> = new EventEmitter();
     @Input () inputdisabled:boolean
@@ -72,7 +74,15 @@ export class WMatTimePickerComponent implements OnInit {
             return `${hour}:${this.userTime.minute} ${meriden}`;
         }
     }
-
+    ngOnChanges(changes: SimpleChanges) {
+        debugger
+       if(changes.haserror)
+       {
+        this.inptcontrol.markAsTouched();
+       }
+        
+      
+      }
 
     public showPicker($event) {
 
@@ -105,7 +115,7 @@ export class WMatTimePickerComponent implements OnInit {
     }
 
     private emituserTimeChange() {
-
+       
         this.userTimeChange.emit(this.userTime);
     }
 }

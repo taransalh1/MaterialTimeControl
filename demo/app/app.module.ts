@@ -10,6 +10,7 @@ import { MaterialTimeControlModule } from '../../src/material-time-control.modul
 import {
   MatCardModule,
 } from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,8 @@ import {
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     MaterialTimeControlModule,
     MatCardModule

@@ -16,6 +16,7 @@ import {
   WClockComponent,
   WTimeComponent
 } from './time-control';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {
     MatToolbarModule,
     CommonModule,
     FlexLayoutModule,
+    ReactiveFormsModule
   ],
   exports: [
     WMatTimePickerComponent,
