@@ -79,6 +79,10 @@ export class WMatTimePickerComponent implements OnInit {
     
 
     public showPicker($event) {
+        debugger
+        if($event.srcElement == undefined )
+        $event.originalTarget.focus=false
+        else
         $event.srcElement.focus=false;
         const dialogRef = this.dialog.open(WTimeDialogComponent, {
 
