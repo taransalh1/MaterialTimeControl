@@ -16,6 +16,7 @@ import { FormControl,ReactiveFormsModule } from '@angular/forms';
 
 export class WMatTimePickerComponent implements OnInit {
     inptcontrol=new FormControl();
+    inputFocused:boolean=false;
     @Input() errormessage:string;
     @Input() haserror:boolean; 
     @Input() userTime: ITime;
@@ -78,7 +79,7 @@ export class WMatTimePickerComponent implements OnInit {
     
 
     public showPicker($event) {
-
+        $event.srcElement.focus=false;
         const dialogRef = this.dialog.open(WTimeDialogComponent, {
 
             data: {
@@ -94,8 +95,9 @@ export class WMatTimePickerComponent implements OnInit {
         });
 
         dialogRef.afterClosed()
+        
             .subscribe((result: ITime | -1) => {
-
+                // $event.srcElement.
                 // result will be update userTime object or -1 or undefined (closed dialog w/o clicking cancel)
                 if (result === undefined) {
                     return;

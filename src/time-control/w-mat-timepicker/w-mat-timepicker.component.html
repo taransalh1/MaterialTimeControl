@@ -7,13 +7,13 @@
 
     <div fxFlex class="timeContainer">
         <mat-form-field> 
-    <input matInput [formControl]="inptcontrol" 
+    <input matInput  (focus)="showPicker($event)" [formControl]="inptcontrol" 
         class="timeInput"
         [placeholder]="plchlder" 
         id="time_Control" 
         name="time_Control"
         [disabled]="inptdisabled"   
-        [value]="time"
+        [(ngModel)]="time"
         [name]="nm" required>
     </mat-form-field>
     <mat-error *ngIf="haserror">
