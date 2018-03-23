@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  public stringexptime={value:''};
+  public stringexptime='19:20';
   private exportTime = { hour: 7, minute: 15, meriden: 'PM', format: 24 };
   saveit()
 {

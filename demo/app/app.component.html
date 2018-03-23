@@ -1,6 +1,6 @@
 <div class="container">
   <form class="demo-form">
-    <w-mat-timepicker color="primary" isstringBinded="true" [(stringuserTime)]="stringexptime" [(userTime)]="exportTime"></w-mat-timepicker>
+    <w-mat-timepicker color="primary" isstringBinded="true" [(stringUT)]="stringexptime" [(userTime)]="exportTime" (stringuserTimeChange)="stringexptime=$event"></w-mat-timepicker>
   </form>
 </div>
 <button (click)="saveit()">hello</button>
