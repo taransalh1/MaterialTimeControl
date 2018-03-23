@@ -1,23 +1,6 @@
 <div class="container">
   <form class="demo-form">
-    <w-mat-timepicker color="primary" isstringBinded="false" [(stringuserTime)]="stringexptime" [(userTime)]="exportTime"></w-mat-timepicker>
+    <w-mat-timepicker color="primary" isstringBinded="true" [(stringuserTime)]="stringexptime" [(userTime)]="exportTime"></w-mat-timepicker>
   </form>
 </div>
-
-<mat-card>
-  <mat-card-content>
-      <w-time color="primary" [(userTime)]="exportTime"></w-time>
-  </mat-card-content>
-</mat-card>
-
-<mat-card>
-  <mat-card-content>
-      <w-time color="accent" [(userTime)]="exportTime" revertLabel="Revert" submitLabel="Submit"></w-time>
-  </mat-card-content>
-</mat-card>
-
-<mat-card>
-  <mat-card-content>
-      <w-time color="warn" [(userTime)]="exportTime"></w-time>
-  </mat-card-content>
-</mat-card>
+<button (click)="saveit()">hello</button>

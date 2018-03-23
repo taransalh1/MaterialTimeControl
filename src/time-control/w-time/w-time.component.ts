@@ -13,14 +13,15 @@ import { CLOCK_TYPE, ITime } from '../w-clock/w-clock.component';
 export class WTimeComponent implements OnInit {
 
   @Input() userTime: ITime;
-  @Input() stringuserTime: string='';
+ // @Input() stringuserTime: string='';
   @Output() userTimeChange: EventEmitter<ITime> = new EventEmitter();
-
+  @Output() SuserTimeChange: EventEmitter<string> = new EventEmitter();
   @Input() revertLabel: string;
   @Input() submitLabel: string;
 
   @Output() onRevert: EventEmitter<null> = new EventEmitter();
   @Output() onSubmit: EventEmitter<ITime> = new EventEmitter();
+  @Output() SonSubmit: EventEmitter<string> = new EventEmitter();
 
   @Input() color: string;
 
@@ -94,12 +95,16 @@ export class WTimeComponent implements OnInit {
   }
 
   public submit() {
-
+    debugger
     this.onSubmit.emit(this.userTime);
+    //this.SonSubmit.emit(this.stringuserTime);
+    
   }
 
   public emituserTimeChange(event) {
-debugger
+    debugger
     this.userTimeChange.emit(this.userTime);
+   // this.SuserTimeChange.emit(this.stringuserTime);
+    
   }
 }

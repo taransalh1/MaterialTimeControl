@@ -20,9 +20,10 @@ export class WMatTimePickerComponent implements OnInit {
     @Input() errormessage:string;
     @Input() haserror:boolean; 
     @Input() userTime: ITime;
-    @Input() stringuserTime:string;
+    @Input() stringuserTime: any;
     @Input() isstringBinded:string;
     @Output() userTimeChange: EventEmitter<ITime> = new EventEmitter();
+    @Output() SuserTimeChange: EventEmitter<string> = new EventEmitter();
     @Input () inputdisabled:boolean
     @Input () Placeholder:string
     @Input() color: string;
@@ -34,16 +35,16 @@ export class WMatTimePickerComponent implements OnInit {
     constructor(private dialog: MatDialog) { }
 
     ngOnInit() {
-debugger
+
         if(this.isstringBinded==="true"){
-            if (this.stringuserTime==''){
-              this.stringuserTime="18:00"
+            if (this.stringuserTime.value==''){
+              this.stringuserTime.value="18:00"
             }
            
             this.userTime = {
     
-              hour: parseInt(this.stringuserTime.split(':')[0]),
-              minute: parseInt(this.stringuserTime.split(':')[1]),
+              hour: parseInt(this.stringuserTime.value.split(':')[0]),
+              minute: parseInt(this.stringuserTime.value.split(':')[1]),
               meriden: 'PM',
               format: 24
           };
@@ -66,7 +67,6 @@ debugger
     }
 
     private get time(): string {
-debugger
         if (!this.userTime) {
             return '';
         }
@@ -118,13 +118,14 @@ debugger
         dialogRef.afterClosed()
         
             .subscribe((result: ITime | -1) => {
+                debugger
                 // $event.srcElement.
                 // result will be update userTime object or -1 or undefined (closed dialog w/o clicking cancel)
                 if (result === undefined) {
                     return;
                 } else if (result !== -1) {
                     this.userTime = result;
-                    this.stringuserTime=result.hour+":"+result.minute;
+                    this.stringuserTime.value=result.hour+":"+result.minute;
                     this.emituserTimeChange();
                 }
             });
@@ -132,7 +133,9 @@ debugger
     }
 
     private emituserTimeChange() {
-       
+        debugger
         this.userTimeChange.emit(this.userTime);
+        this.SuserTimeChange.emit(this.stringuserTime);
+      
     }
 }
