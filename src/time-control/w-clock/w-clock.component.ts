@@ -25,6 +25,7 @@ export interface ITime {
 export class WClockComponent implements OnChanges {
 
     @Input() public userTime: ITime;
+    @Input() public stringuserTime:string;
     @Output() public userTimeChange: EventEmitter<ITime> = new EventEmitter();
 
     @Input() public currentView: CLOCK_TYPE;
@@ -128,12 +129,16 @@ export class WClockComponent implements OnChanges {
 
         if (this.currentView === CLOCK_TYPE.HOURS) {
             this.userTime.hour = step;
-
+            let parts=this.stringuserTime.split(':');
+            parts[0]=step.toString();
+            this.selectedTimePart=parts.join(':');
             // auto switch to minutes
             this.viewChange.emit(CLOCK_TYPE.MINUTES);
         } else {
             this.userTime.minute = step;
-
+            let parts=this.stringuserTime.split(':');
+            parts[1]=step.toString();
+            this.selectedTimePart=parts.join(':');
             // auto switch to hours
             this.viewChange.emit(CLOCK_TYPE.HOURS);
         }

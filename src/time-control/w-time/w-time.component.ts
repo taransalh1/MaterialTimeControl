@@ -13,6 +13,7 @@ import { CLOCK_TYPE, ITime } from '../w-clock/w-clock.component';
 export class WTimeComponent implements OnInit {
 
   @Input() userTime: ITime;
+  @Input() stringuserTime: string='';
   @Output() userTimeChange: EventEmitter<ITime> = new EventEmitter();
 
   @Input() revertLabel: string;
@@ -30,7 +31,7 @@ export class WTimeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    
     if (!this.userTime) {
 
       this.userTime = {
@@ -41,6 +42,7 @@ export class WTimeComponent implements OnInit {
         format: 12
       };
     }
+  
 
     if (!this.revertLabel) {
 
@@ -97,7 +99,7 @@ export class WTimeComponent implements OnInit {
   }
 
   public emituserTimeChange(event) {
-
+debugger
     this.userTimeChange.emit(this.userTime);
   }
 }

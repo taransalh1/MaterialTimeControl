@@ -20,6 +20,8 @@ export class WMatTimePickerComponent implements OnInit {
     @Input() errormessage:string;
     @Input() haserror:boolean; 
     @Input() userTime: ITime;
+    @Input() stringuserTime:string;
+    @Input() isstringBinded:string;
     @Output() userTimeChange: EventEmitter<ITime> = new EventEmitter();
     @Input () inputdisabled:boolean
     @Input () Placeholder:string
@@ -32,24 +34,39 @@ export class WMatTimePickerComponent implements OnInit {
     constructor(private dialog: MatDialog) { }
 
     ngOnInit() {
-
-        if (!this.userTime) {
-
-            this.userTime = {
-
-                hour: 10,
-                minute: 25,
-                meriden: 'PM',
-                format: 24
+debugger
+        if(this.isstringBinded==="true"){
+            if (this.stringuserTime==''){
+              this.stringuserTime="18:00"
             }
+           
+            this.userTime = {
+    
+              hour: parseInt(this.stringuserTime.split(':')[0]),
+              minute: parseInt(this.stringuserTime.split(':')[1]),
+              meriden: 'PM',
+              format: 24
+          };
+          }
+          else{
+        if (!this.userTime) {
+    
+          this.userTime = {
+    
+            hour: 6,
+            minute: 0,
+            meriden: 'PM',
+            format: 12
+          };
         }
+      }
         this.inptdisabled=this.inputdisabled;
         this.plchlder=this.Placeholder;
         this.nm=this.name;
     }
 
     private get time(): string {
-
+debugger
         if (!this.userTime) {
             return '';
         }
@@ -107,6 +124,7 @@ export class WMatTimePickerComponent implements OnInit {
                     return;
                 } else if (result !== -1) {
                     this.userTime = result;
+                    this.stringuserTime=result.hour+":"+result.minute;
                     this.emituserTimeChange();
                 }
             });
