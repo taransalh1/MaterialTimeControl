@@ -20,7 +20,14 @@ export class WMatTimePickerComponent implements OnInit {
     @Input() errormessage:string;
     @Input() haserror:boolean; 
     @Input() userTime: ITime;
-    @Input('stringUT') stringuserTime: string;
+    private stringuserTime: string;
+    @Input('stringUT') set allowDay(value: string) {
+        this.stringuserTime = value;
+      }
+      get allowDay(): string {
+        // other logic
+        return this.userTime.hour+":"+this.userTime.minute;
+      }
     @Input() isstringBinded:string;
     @Output() userTimeChange: EventEmitter<ITime> = new EventEmitter();
     @Output() stringuserTimeChange: EventEmitter<string> = new EventEmitter();
@@ -133,6 +140,7 @@ export class WMatTimePickerComponent implements OnInit {
         return false;
     }
 
+   
     private emituserTimeChange() {
         debugger
         this.userTimeChange.emit(this.userTime);
