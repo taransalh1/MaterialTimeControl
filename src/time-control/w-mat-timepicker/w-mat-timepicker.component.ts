@@ -23,6 +23,13 @@ export class WMatTimePickerComponent implements OnInit {
     private stringuserTime: string;
     @Input('stringUT') set allowDay(value: string) {
         this.stringuserTime = value;
+        this.userTime = {
+    
+            hour: parseInt(this.stringuserTime.split(':')[0]),
+            minute: parseInt(this.stringuserTime.split(':')[1]),
+            meriden: 'PM',
+            format: 24
+        };
       }
       get allowDay(): string {
         // other logic
